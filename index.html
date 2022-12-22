@@ -1,33 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Telephone Formatter</title>
     <style>
-        main{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        h1{
-            border-bottom: 4px solid;
-        }
-        input{
-            height: 2rem;
-
-        }
+        
+      main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      h1 {
+        border-bottom: 4px solid;
+      }
+      input {
+        height: 2rem;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <h1>Telephone formatter</h1>
-        <hr>
-        <input type="number" name="" id="" placeholder="Enter Your Mobile Number">
-        <h2>+(123)-45678</h2>
+        
+        
+      <h1>Telephone formatter by</h1>
+      <div id="socials">
+        <a href="https://github.com/mohit502" target="_blank"><img hre src="assets/github.png" alt="" srcset=""></a>
+        <a href="https://www.linkedin.com/in/mohit-bhatt-079202208/" target="_blank"><img hre src="assets/linkedin.png" alt="" srcset=""></a>
+        
+    </div>
+      <hr />
+      <input
+        onkeydown="phoneNumberFormatter()"
+        maxlength="17"
+        id="phone-number"
+        placeholder="Enter Your Mobile Number"
+      />
+      <h2>+(123)-45678</h2>
     </main>
 
-</body>
+    <script>
+        // console.log(document.querySelector("#phone-number").value.lent)
+        // console.log(document.querySelector("#phone-number"))
+      function formatPhoneNumber(value) {
+        if (!value) return value;
+        const phoneNumber = value.replace(/[^\d]/g, '');
+        const phoneNumberLength = phoneNumber.length;
+        console.log(phoneNumber);
+        if(phoneNumberLength < 4) return phoneNumber;
+        
+        return `+(${phoneNumber.slice(0,3)})-${phoneNumber.slice(3)}`;
+        
+
+       
+      }
+
+      function phoneNumberFormatter() {
+        const inputField = document.getElementById("phone-number");
+        const formattedInputValue = formatPhoneNumber(inputField.value);
+        inputField.value = formattedInputValue;
+      }
+
+      // const phone = document.getElementById("phone");
+      // phone.addEventListener('onKeyDown',function phoneNumberFormatter(phone){
+      //     if(!phone.value) return;
+
+      // })
+    </script>
+  </body>
 </html>
